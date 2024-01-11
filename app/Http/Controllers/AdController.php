@@ -88,7 +88,13 @@ class AdController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $ad = Ad::find($id);
+
+        if (Auth::user()->id != $ad->user_id) {
+            return back()->with(['success' => false, 'message_type' => 'danger', 'message' => 'Nie posiadasz uprawnień do przeprowadzenia tej operacji.']);
+        }
+
+        return Inertia::render('EditAd', ['ad'=>$ad]);
     }
 
     /**
@@ -96,7 +102,25 @@ class AdController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $ad = Ad::find($id);
+
+        if(Auth::user()->id != $ad->user_id) {
+            return back()->with(['success' => false, 'message_type' => 'danger', 'message' => 'Nie posiadasz uprawnień do przeprowadzenia tej operacji.']);
+        }
+
+        $ad->user_id = Auth::user()->id;
+        $ad->title = $request->title;
+        $ad->category = $request->category;
+        $ad->description = $request->description;
+        $ad->amount = $request->amount;
+        $ad->state = $request->state;
+        $ad->location = $request->location;
+
+        if($ad->save()) {
+            return Inertia::render('Ad', ['ad'=>$ad]);
+        }
+
+        return "Wystąpił błąd.";
     }
 
     /**
@@ -104,6 +128,16 @@ class AdController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $ad = Ad::find($id);
+        
+        if(Auth::user()->id != $ad->user_id) {
+            return back();
+        }
+
+        if($ad->delete()) {
+            return redirect()->route('ads.index');
+        }
+
+        else return back();
     }
 }

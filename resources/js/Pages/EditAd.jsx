@@ -6,24 +6,26 @@ import InputError from "@/Components/InputError";
 import InputLabel from "@/Components/InputLabel";
 import PrimaryButton from "@/Components/PrimaryButton";
 import TextInput from "@/Components/TextInput";
-import { Head, Link, useForm, usePage } from "@inertiajs/react";
+import { Head, Link, useForm } from "@inertiajs/react";
 
-
-export default function Adding({ auth }) {
+export default function EditAd({ auth, ad }) {
     const { data, setData, post, processing, errors, reset } = useForm({
-        title: "",
-        category: "",
-        description: "",
-        amount: "",
-        state: "",
-        location: "",
-        agree: false,
+        title: ad.title,
+        category: ad.category,
+        description: ad.description,
+        amount: ad.amount,
+        state: ad.state,
+        location: ad.location,
     });
 
     const submit = (e) => {
         e.preventDefault();
 
-        post("adding");
+        post(route("ad.update", ad.id), {
+            _method: 'PUT',
+            data: data,
+        });
+
     };
 
     return (
@@ -31,15 +33,15 @@ export default function Adding({ auth }) {
             user={auth.user}
             header={
                 <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                    Dodaj ogłoszenie
+                    Edytowanie ogłoszenia
                 </h2>
             }
         >
-            <Head title="Adding" />
+            <Head title="Edytowanie ogłoszenia" />
 
             <div className="mx-auto max-w-7xl sm:px-6 lg:px-8 py-10 text-gray-900 dark:text-gray-100 ">
                 <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight pb-10">
-                    Dodawanie ogłoszenia
+                    Edytowanie ogłoszenia
                 </h2>
 
                 {Object.keys(errors).length > 0 && (
@@ -60,6 +62,7 @@ export default function Adding({ auth }) {
                     
                     class="max-w-sm mx-auto"
                 >
+                    {/* {method('PUT')} */}
                     <div class="mb-5">
                         <label
                             for="title"
@@ -218,9 +221,9 @@ export default function Adding({ auth }) {
 
                     <button
                         type="submit"
-                        class="text-white bg-[#002f34] hover:bg-[#012023] focus:ring-4 focus:outline-none focus:ring-[#064950] font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                        class="text-white bg-[#002f34] hover:bg-[#012023] focus:ring-4 focus:outline-none focus:ring-[#064950] font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 cursor-pointer"
                     >
-                        Dodaj ogłoszenie
+                        Zapisz zmiany
                     </button>
                 </form>
             </div>

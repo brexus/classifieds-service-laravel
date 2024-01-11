@@ -14,12 +14,12 @@ export default function Ad({ auth, ad }) {
             <Head title="Ogłoszeniaa" />
 
 
-            <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 py-10 mt-10 dark:bg-gray-800 shadow-sm sm:rounded-lg">
+            <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 py-10 mt-10 bg-white dark:bg-gray-800 sm:rounded-sm">
                 <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex flex-col md:flex-row -mx-4 ">
                         <div className="md:flex-1 px-4">
-                            <div className="h-[460px] rounded-lg bg-gray-300 dark:bg-gray-700 mb-4 flex justify-center align-items-center">
-                                <img className="w-full h-full object-cover rounded-lg" src="https://cdn.pixabay.com/photo/2020/05/22/17/53/mockup-5206355_960_720.jpg" alt="Product Image" />
+                            <div className="h-[460px] bg-gray-300 dark:bg-gray-700 mb-4 flex justify-center align-items-center sm:rounded-sm">
+                                <img className="w-full p-20 object-contain " src="../img/oly.png" alt="Product Image" />
                             </div>
                         </div>
 
@@ -33,10 +33,30 @@ export default function Ad({ auth, ad }) {
                             </div>
 
                             <div>
-                                <span className="font-bold text-gray-700 dark:text-gray-300">Opis</span>
+                                <span className="font-bold text-gray-700 dark:text-gray-300">Opis:</span>
                                 <p className="text-gray-600 dark:text-gray-300 text-sm mt-2">
                                     {ad.description}
                                 </p>
+                            </div>
+
+                            <div className="py-10">
+                                {auth.user.id == ad.user_id ? (
+                                    <>
+                                        <a href={route('ad.edit', ad.id)}
+                                            className="h-max focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+                                            onclick="return confirm('Jesteś pewien?')"
+                                            title="Skasuj"> Edytuj
+                                        </a>
+                                        <a href={route('ad.delete', ad.id)}
+                                            className="h-max focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+                                            onclick="return confirm('Jesteś pewien?')"
+                                            title="Skasuj"> Usuń
+                                        </a>
+                                    </>
+                                ) : (
+                                    <></>
+                                )}
+
                             </div>
                             
                         </div>

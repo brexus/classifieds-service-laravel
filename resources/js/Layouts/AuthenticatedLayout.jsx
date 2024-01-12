@@ -70,19 +70,19 @@ export default function Authenticated({ user, header, children }) {
                                         <Dropdown.Link
                                             href={route("profile.edit")}
                                         >
-                                            Profile
+                                            Profil
                                         </Dropdown.Link>
-                                        <Dropdown.Link
+                                        {/* <Dropdown.Link
                                             href={route("ads.index")}
                                         >
                                             Moje ogłoszenia
-                                        </Dropdown.Link>
+                                        </Dropdown.Link> */}
                                         <Dropdown.Link
                                             href={route("logout")}
                                             method="post"
                                             as="button"
                                         >
-                                            Log Out
+                                            Wyloguj się
                                         </Dropdown.Link>
                                     </Dropdown.Content>
                                 </Dropdown>

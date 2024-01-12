@@ -5,6 +5,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\AdController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,7 +45,11 @@ Route::get('/ads/{ad}', [AdController::class, 'show'])->middleware(['auth', 'ver
 
 Route::get('/delete/{id}', [AdController::class, 'destroy'])->middleware(['auth', 'verified'])->name('ad.delete');
 Route::get('/edit/{id}', [AdController::class, 'edit'])->middleware(['auth', 'verified'])->name('ad.edit');
-Route::put('/update/{id}', [AdController::class, 'update'])->middleware(['auth', 'verified'])->name('ad.update');
+Route::post('/update/{id}', [AdController::class, 'update'])->middleware(['auth', 'verified'])->name('ad.update');
+
+
+
+Route::get('/category/{cat}', [CategoryController::class, 'show'])->middleware(['auth', 'verified'])->name('category.show');
 
 
 require __DIR__.'/auth.php';

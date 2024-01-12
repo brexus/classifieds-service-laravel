@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('user_id')->unsigned();
             $table->string('title', 70);
-            $table->enum('category', ['Antyki i Kolekcje', 'Motoryzacja', 'Nieruchomości', 'Dom i Ogród', 'Elektronika', 'Moda', 'Rolnictwo', 'Zwierzęta', 'Dla Dzieci', 'Sport i Hobby', 'Muzyka i Edukacja', 'Zdrowie i Uroda']);
+            $table->enum('category', ['Motoryzacja', 'Nieruchomości', 'Dom i Ogród', 'Elektronika', 'Moda', 'Zwierzęta', 'Sport i Hobby', 'Literatura']);
             $table->string('description', 1000);
             $table->decimal('amount', 8, 2);
             $table->enum('state', ['Nowe', 'Używane', 'Uszkodzone']);

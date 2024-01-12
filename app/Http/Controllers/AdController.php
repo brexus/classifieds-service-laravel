@@ -15,7 +15,7 @@ class AdController extends Controller
     public function index()
     {
         $ads = Ad::orderBy('created_at', 'asc')->get();
-        return Inertia::render('Ads', ['ads' => $ads]);
+        return Inertia::render('Ads', ['ads' => $ads, 'title' => 'Wszystkie Ogłoszenia']);
 
     }
 
@@ -58,9 +58,9 @@ class AdController extends Controller
         $ad->location = $request->location;
         
         if ($ad->save()) {
-            return redirect('dashboard');
+            return redirect('ads');
         }
-        return view('dashboard');
+        return view('ads');
            
     }
 

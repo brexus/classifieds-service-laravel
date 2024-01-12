@@ -11,7 +11,7 @@ export default function Ad({ auth, ad }) {
                 </h2>
             }
         >
-            <Head title="Ogłoszeniaa" />
+            <Head title={ad.title} />
 
 
             <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 py-10 mt-10 bg-white dark:bg-gray-800 sm:rounded-sm">
@@ -19,7 +19,7 @@ export default function Ad({ auth, ad }) {
                     <div className="flex flex-col md:flex-row -mx-4 ">
                         <div className="md:flex-1 px-4">
                             <div className="h-[460px] bg-gray-300 dark:bg-gray-700 mb-4 flex justify-center align-items-center sm:rounded-sm">
-                                <img className="w-full p-20 object-contain " src="../img/oly.png" alt="Product Image" />
+                                <img className="w-full p-20 object-contain " src="/img/oly.png" alt="Product Image" />
                             </div>
                         </div>
 

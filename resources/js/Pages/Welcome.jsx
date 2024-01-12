@@ -1,16 +1,17 @@
 import { Link, Head } from "@inertiajs/react";
 import Footer from "@/Components/Footer";
+import Category from "@/Components/Category";
 
 export default function Welcome({ auth, laravelVersion, phpVersion }) {
     return (
         <>
-            <Head title="Welcome" />
-            <div className="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
+            <Head title="Strona Główna" />
+            <div className="min-h-screen flex flex-col justify-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-[#23e5db] selection:text-white">
                 <div className="sm:fixed sm:top-0 sm:right-0 p-6 text-end">
                     {auth.user ? (
                         <Link
                             href={route("ads.index")}
-                            className="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
+                            className="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-[#23e5db]"
                         >
                             Moje OLY
                         </Link>
@@ -18,14 +19,14 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                         <>
                             <Link
                                 href={route("login")}
-                                className="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
+                                className="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-[#23e5db]"
                             >
                                 Zaloguj się
                             </Link>
 
                             <Link
                                 href={route("register")}
-                                className="ms-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
+                                className="ms-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-[#23e5db]"
                             >
                                 Rejestracja
                             </Link>
@@ -33,8 +34,8 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                     )}
                 </div>
 
-                <div className="max-w-7xl mx-auto p-6 lg:p-8">
-                    <div className="flex justify-center">
+                <div className="max-w-7xl p-6 lg:p-8 mx-auto">
+                    <div className="flex justify-center pb-10">
                         <img
                             src="img/oly.png"
                             alt=""
@@ -42,11 +43,23 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                         />
                     </div>
 
+                    <Category></Category>
+
+
+                    {/* <img className=" rounded-md" src="/shop_main.jpg" alt="" /> */}
               
                 </div>
-            </div>
 
-            <Footer></Footer>
+                <div className="mt-auto">
+                    <div className="bg-[#002f34] dark:bg-gray-900 mt-auto">
+                        <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+                            <h2 className="text-center text-bold font-bold text-xl text-white">Poznaj ofertę OLY!</h2>
+                        </div>
+                    </div>
+
+                    <Footer></Footer>
+                </div>             
+            </div>
 
             <style>{`
                 .bg-dots-darker {

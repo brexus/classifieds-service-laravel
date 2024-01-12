@@ -2,7 +2,7 @@ export default function Footer({ className = "", ...props }) {
     return (
         <footer
             {...props}
-            className="bg-[#cbf7ee] rounded-lg shadow dark:bg-gray-900 mt-auto"
+            className="bg-[#cbf7ee] dark:bg-gray-900 mt-auto"
         >
             <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
                 <div class="sm:flex sm:items-center sm:justify-between">
@@ -11,7 +11,7 @@ export default function Footer({ className = "", ...props }) {
                         class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse"
                     >
                         <img
-                            src="./img/oly.png"
+                            src="/img/oly.png"
                             class="h-8"
                             alt="Flowbite Logo"
                         />

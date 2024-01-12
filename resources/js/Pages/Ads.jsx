@@ -1,30 +1,35 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
+import Category from '@/Components/Category';
 
-export default function Ads({ auth, ads }) {
+export default function Ads({ auth, ads, title }) {
     return (
         <AuthenticatedLayout
             user={auth.user}
             header={
                 <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                    Wszystkie ogłoszenia
+                    {title}
                 </h2>
             }
         >
-            <Head title="Wszystkie ogłoszenia" />
+            <Head title={title} />
 
             
-            <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 pt-10">
-                <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight pb-10">
-                    Wszystkie ogłoszenia
+            <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 py-10">
+                <Category></Category>
+
+                <h2 className="text-center pt-10 font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight pb-10">
+                    {title}
                 </h2>
 
-                <div className="text-black md:p-0 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-10 items-start ">
+                
+
+                <div className="text-black md:p-0 grid grid-cols-[repeat(auto-fit,minmax(290px,1fr))] gap-10 items-start self-center justify-items-center">
                     {ads.map((el, index) => (
                         <a href={route('ads.show', el.id)}>
                             <div className="grid grid-cols-1 grid-rows-[224px,90px,70px] h-96 w-72 shadow-sm sm:rounded-lg text-center text-black bg-white transform duration-200 hover:-translate-y-1 cursor-pointer">
                                 <div className=" flex flex-col justify-center align-items-center w-full h-full bg-gray-300">
-                                    <img className="p-12 w-full" src="./img/oly.png" alt="" />
+                                    <img className="p-12 w-full" src="/img/OLY.png" alt="" />
                                 </div>
 
                                 <div className=" flex flex-col justify-center align-items-center px-5">

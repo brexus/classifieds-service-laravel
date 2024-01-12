@@ -19,12 +19,16 @@ export default function EditAd({ auth, ad }) {
     });
 
     const submit = (e) => {
-        e.preventDefault();
+        //e.preventDefault();
 
-        post(route("ad.update", ad.id), {
-            _method: 'PUT',
-            data: data,
-        });
+        preventDefault();
+    
+        //post(route('ad.update', { id: ad.id }), data);
+
+        route('ad.update', { id: ad.id });
+        
+
+        
 
     };
 
@@ -57,12 +61,15 @@ export default function EditAd({ auth, ad }) {
                     onSubmit={submit}
                     // action="{{ route('store') }}" 
                     method="post" 
-                    enctype="multipart/form-data"
+ 
                     id="comment-form"
                     
                     class="max-w-sm mx-auto"
                 >
                     {/* {method('PUT')} */}
+
+                    <input hidden name="_method" value="PUT" />
+                    
                     <div class="mb-5">
                         <label
                             for="title"

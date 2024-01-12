@@ -31,24 +31,16 @@ export default function Adding({ auth }) {
             user={auth.user}
             header={
                 <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                    Dodaj ogłoszenie
+                    Dodaj Ogłoszenie
                 </h2>
             }
         >
-            <Head title="Adding" />
+            <Head title="Dodawanie Ogłoszenia" />
 
             <div className="mx-auto max-w-7xl sm:px-6 lg:px-8 py-10 text-gray-900 dark:text-gray-100 ">
                 <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight pb-10">
                     Dodawanie ogłoszenia
                 </h2>
-
-                {Object.keys(errors).length > 0 && (
-                    <ul>
-                        {Object.values(errors).map((error, index) => (
-                            <li key={index}>{error}</li>
-                        ))}
-                    </ul>
-                )}
 
                 <form
                     role="form"
@@ -73,6 +65,8 @@ export default function Adding({ auth }) {
                             class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                             placeholder="Podaj tytuł..."
                             name="title"
+                            min="1"
+                            max="70"
                             value={data.title}
                             isFocused={true}
                             onChange={(e) => setData("title", e.target.value)}
@@ -95,18 +89,15 @@ export default function Adding({ auth }) {
                                 setData("category", e.target.value)
                             }
                         >
-                            <option>Antyki i Kolekcje</option>
+                            <option></option>
                             <option>Motoryzacja</option>
                             <option>Nieruchomości</option>
                             <option>Dom i Ogród</option>
                             <option>Elektronika</option>
                             <option>Moda</option>
-                            <option>Rolnictwo</option>
                             <option>Zwierzęta</option>
-                            <option>Dla Dzieci</option>
                             <option>Sport i Hobby</option>
-                            <option>Muzyka i Edukacja</option>
-                            <option>Zdrowie i Uroda</option>
+                            <option>Literatura</option>
                         </select>
                     </div>
 
@@ -122,6 +113,8 @@ export default function Adding({ auth }) {
                             name="description"
                             value={data.description}
                             rows="4"
+                            min="1"
+                            max="1000"
                             class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             placeholder="Podaj opis..."
                             onChange={(e) =>
@@ -138,9 +131,11 @@ export default function Adding({ auth }) {
                             Cena
                         </label>
                         <input
-                            type="text"
+                            type="number"
                             id="amount"
                             name="amount"
+                            min="0"
+                            step="0.01"
                             value={data.amount}
                             class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                             placeholder="Podaj cenę..."
@@ -162,6 +157,7 @@ export default function Adding({ auth }) {
                             onChange={(e) => setData("state", e.target.value)}
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         >
+                            <option></option>
                             <option>Nowe</option>
                             <option>Używane</option>
                             <option>Uszkodzone</option>
@@ -179,6 +175,8 @@ export default function Adding({ auth }) {
                             type="text"
                             name="location"
                             id="location"
+                            minLength={1}
+                            maxLength={40}
                             value={data.location}
                             onChange={(e) =>
                                 setData("location", e.target.value)
@@ -215,6 +213,14 @@ export default function Adding({ auth }) {
                             </a>
                         </label>
                     </div> */}
+
+                    {Object.keys(errors).length > 0 && (
+                        <ul className="mx-auto max-w-7xl font-bold text-red-700 pb-5">
+                            {Object.values(errors).map((error, index) => (
+                                <li key={index} className="">{error}</li>
+                            ))}
+                        </ul>
+                    )}
 
                     <button
                         type="submit"

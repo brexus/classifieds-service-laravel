@@ -6,17 +6,18 @@ import Footer from '@/Components/Footer';
 
 export default function Guest({ children }) {
     return (
-        <div className="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
-            <div>
-                <Link href="/">
-                    <ApplicationLogo className="w-20 h-max fill-current text-gray-500" />
-                </Link>
-            </div>
+        <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex flex-col justify-center align-items-center">
+            <div className="max-w-7xl min-w-[400px] mx-auto my-auto sm:px-6 lg:px-8 py-16 flex flex-col">
+                <div className="flex w-full justify-center">
+                    <Link href="/">
+                        <ApplicationLogo className="w-20 h-max fill-current text-gray-500" />
+                    </Link>
+                </div>
 
-            <div className="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
-                {children}
+                <div className="w-full mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
+                    {children}
+                </div>
             </div>
-
             <Footer></Footer>
         </div>
     );

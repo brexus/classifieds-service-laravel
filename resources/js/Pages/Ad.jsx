@@ -24,20 +24,36 @@ export default function Ad({ auth, ad }) {
                         </div>
 
                         <div className="md:flex-1 px-4 flex flex-col justify-center align-items-center">
-                            <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-2">{ad.title}</h2>
+                            <h2 className="text-4xl font-bold text-gray-800 dark:text-white mb-2">{ad.title}</h2>
                             <div className="flex mb-4">
                                 <div className="mr-4">
-                                    <span className="font-bold text-gray-700 dark:text-gray-300">Cena:</span>
-                                    <span className="text-gray-600 dark:text-gray-300"> {ad.amount} zł</span>
+                                    {/* <span className="text-2xl font-bold text-gray-700 dark:text-gray-300">Cena:</span> */}
+                                    <span className="text-3xl font-bold text-gray-600 dark:text-gray-300"> {ad.amount} zł</span>
                                 </div>
                             </div>
 
-                            <div>
-                                <span className="font-bold text-gray-700 dark:text-gray-300">Opis:</span>
-                                <p className="text-gray-600 dark:text-gray-300 text-sm mt-2">
+                            <div className="flex mb-1 mt-3">
+                                <div className="mr-4">
+                                    <span className="font-bold text-gray-700 dark:text-gray-300">Lokalizacja:</span>
+                                    <span className="text-gray-600 dark:text-gray-300"> {ad.location}</span>
+                                </div>
+                            </div>
+
+                            <div className="flex mb-1">
+                                <div className="mr-4">
+                                    <span className="font-bold text-gray-700 dark:text-gray-300">Stan:</span>
+                                    <span className="text-gray-600 dark:text-gray-300"> {ad.state}</span>
+                                </div>
+                            </div>
+
+                            <div className='mt-8'>
+                                <span className="text-2xl font-bold text-gray-700 dark:text-gray-300">Opis:</span>
+                                <p className="text-md text-gray-600 dark:text-gray-300 mt-2">
                                     {ad.description}
                                 </p>
                             </div>
+
+
 
                             <div className="py-10">
                                 {auth.user.id == ad.user_id ? (

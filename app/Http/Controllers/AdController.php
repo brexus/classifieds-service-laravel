@@ -117,7 +117,8 @@ class AdController extends Controller
         $ad->location = $request->location;
 
         if($ad->save()) {
-            return Inertia::render('Ad', ['ad'=>$ad]);
+            $ad = Ad::find($id);
+            return redirect()->route('ads.show', ['ad'=>$ad]);
         }
 
         return "Wystąpił błąd.";

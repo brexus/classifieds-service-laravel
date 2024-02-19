@@ -52,9 +52,11 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
 
                 <div className="mt-auto">
                     <div className="bg-[#002f34] dark:bg-gray-900 mt-auto">
-                        <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
-                            <h2 className="text-center text-bold font-bold text-xl text-white">Poznaj ofertę OLY!</h2>
+                        <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8 flex flex-row justify-center items-center">
+                            <img src="/svg/people.svg" alt="" className="h-[70px] pr-5"/>
+                            <h2 className="text-center text-bold font-bold text-xl text-white">Dołącz do społeczności OLY!</h2>
                         </div>
+    
                     </div>
 
                     <Footer></Footer>

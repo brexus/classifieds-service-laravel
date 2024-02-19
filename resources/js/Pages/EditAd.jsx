@@ -19,17 +19,8 @@ export default function EditAd({ auth, ad }) {
     });
 
     const submit = (e) => {
-        //e.preventDefault();
-
-        preventDefault();
-    
-        //post(route('ad.update', { id: ad.id }), data);
-
-        route('ad.update', { id: ad.id });
-        
-
-        
-
+        e.preventDefault();
+        post(route('ad.update', ad.id));
     };
 
     return (
@@ -59,17 +50,11 @@ export default function EditAd({ auth, ad }) {
                 <form
                     role="form"
                     onSubmit={submit}
-                    // action="{{ route('store') }}" 
-                    method="post" 
- 
+                    //action={route('ad.update', ad.id)}
+                    method="post"
                     id="comment-form"
-                    
                     class="max-w-sm mx-auto"
                 >
-                    {/* {method('PUT')} */}
-
-                    <input hidden name="_method" value="PUT" />
-                    
                     <div class="mb-5">
                         <label
                             for="title"
